@@ -35,21 +35,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{79EB7FEC-E91
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "todo", "todo", "{EC159D36-9989-40B1-8DCA-2EAA51217156}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todos", "samples\todo\TodoBasic\Todos.csproj", "{2A6B584B-EF37-4696-9185-5324EA4D8607}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todos", "samples\todo\TodoBasic\Todos.csproj", "{2A6B584B-EF37-4696-9185-5324EA4D8607}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoBasicWithAuth", "samples\todo\TodoBasicWithAuth\TodoBasicWithAuth.csproj", "{028B2CAF-DB3A-42C6-A92E-91B227F49368}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoBasicWithAuth", "samples\todo\TodoBasicWithAuth\TodoBasicWithAuth.csproj", "{028B2CAF-DB3A-42C6-A92E-91B227F49368}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoWithControllers", "samples\todo\TodoWithControllers\TodoWithControllers.csproj", "{5A51E3ED-0F9C-4023-9EC0-3B4D729889F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoWithControllers", "samples\todo\TodoWithControllers\TodoWithControllers.csproj", "{5A51E3ED-0F9C-4023-9EC0-3B4D729889F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoWithControllersAuthJWT", "samples\todo\TodoWithControllersAuthJWT\TodoWithControllersAuthJWT.csproj", "{0E775661-B4C3-43F8-99AE-11D4989825C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoWithControllersAuthJWT", "samples\todo\TodoWithControllersAuthJWT\TodoWithControllersAuthJWT.csproj", "{0E775661-B4C3-43F8-99AE-11D4989825C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoWithDI", "samples\todo\TodoWithDI\TodoWithDI.csproj", "{372744F0-00FB-4CB2-90DC-6B8826469B3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoWithDI", "samples\todo\TodoWithDI\TodoWithDI.csproj", "{372744F0-00FB-4CB2-90DC-6B8826469B3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoWithNoRequestDelegate", "samples\todo\TodoWithNoRequestDelegate\TodoWithNoRequestDelegate.csproj", "{19B3F6B3-7690-430E-BD61-56625B200495}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoWithNoRequestDelegate", "samples\todo\TodoWithNoRequestDelegate\TodoWithNoRequestDelegate.csproj", "{19B3F6B3-7690-430E-BD61-56625B200495}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoWithRoutes", "samples\todo\TodoWithRoutes\TodoWithRoutes.csproj", "{3B44E487-214C-43CD-B5C4-974FFF78112D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoWithRoutes", "samples\todo\TodoWithRoutes\TodoWithRoutes.csproj", "{3B44E487-214C-43CD-B5C4-974FFF78112D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoWithScopedApi", "samples\todo\TodoWithScopedApi\TodoWithScopedApi.csproj", "{2789021A-8A94-4B92-85F1-4A9EB92B5EF6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoWithScopedApi", "samples\todo\TodoWithScopedApi\TodoWithScopedApi.csproj", "{2789021A-8A94-4B92-85F1-4A9EB92B5EF6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoWithParameter", "samples\todo\TodoWithParameter\TodoWithParameter.csproj", "{6540E637-FBDF-420C-887D-2B272C3FFAFE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -277,6 +279,18 @@ Global
 		{2789021A-8A94-4B92-85F1-4A9EB92B5EF6}.Release|x64.Build.0 = Release|Any CPU
 		{2789021A-8A94-4B92-85F1-4A9EB92B5EF6}.Release|x86.ActiveCfg = Release|Any CPU
 		{2789021A-8A94-4B92-85F1-4A9EB92B5EF6}.Release|x86.Build.0 = Release|Any CPU
+		{6540E637-FBDF-420C-887D-2B272C3FFAFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6540E637-FBDF-420C-887D-2B272C3FFAFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6540E637-FBDF-420C-887D-2B272C3FFAFE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6540E637-FBDF-420C-887D-2B272C3FFAFE}.Debug|x64.Build.0 = Debug|Any CPU
+		{6540E637-FBDF-420C-887D-2B272C3FFAFE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6540E637-FBDF-420C-887D-2B272C3FFAFE}.Debug|x86.Build.0 = Debug|Any CPU
+		{6540E637-FBDF-420C-887D-2B272C3FFAFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6540E637-FBDF-420C-887D-2B272C3FFAFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6540E637-FBDF-420C-887D-2B272C3FFAFE}.Release|x64.ActiveCfg = Release|Any CPU
+		{6540E637-FBDF-420C-887D-2B272C3FFAFE}.Release|x64.Build.0 = Release|Any CPU
+		{6540E637-FBDF-420C-887D-2B272C3FFAFE}.Release|x86.ActiveCfg = Release|Any CPU
+		{6540E637-FBDF-420C-887D-2B272C3FFAFE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -301,6 +315,7 @@ Global
 		{19B3F6B3-7690-430E-BD61-56625B200495} = {EC159D36-9989-40B1-8DCA-2EAA51217156}
 		{3B44E487-214C-43CD-B5C4-974FFF78112D} = {EC159D36-9989-40B1-8DCA-2EAA51217156}
 		{2789021A-8A94-4B92-85F1-4A9EB92B5EF6} = {EC159D36-9989-40B1-8DCA-2EAA51217156}
+		{6540E637-FBDF-420C-887D-2B272C3FFAFE} = {EC159D36-9989-40B1-8DCA-2EAA51217156}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FEF71547-9F12-42D5-9D50-602DA5071F3F}
