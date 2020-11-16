@@ -22,14 +22,8 @@ namespace Todos
             await http.Response.WriteAsJsonAsync(todos);
         }
 
-        public async Task GetTodo()
+        public async Task GetTodo(int id)
         {
-            if (!http.Request.RouteValues.TryGet("id", out int id))
-            {
-                http.Response.StatusCode = 400;
-                return;
-            }
-
             var todo = await db.Todos.FindAsync(id);
             if (todo == null)
             {
@@ -50,14 +44,8 @@ namespace Todos
             http.Response.StatusCode = 204;
         }
 
-        public async Task UpdateCompleted()
+        public async Task UpdateCompleted(int id)
         {
-            if (!http.Request.RouteValues.TryGet("id", out int id))
-            {
-                http.Response.StatusCode = 400;
-                return;
-            }
-
             var todo = await db.Todos.FindAsync(id);
 
             if (todo == null)
@@ -74,14 +62,8 @@ namespace Todos
             http.Response.StatusCode = 204;
         }
 
-        public async Task DeleteTodo()
+        public async Task DeleteTodo(int id)
         {
-            if (!http.Request.RouteValues.TryGet("id", out int id))
-            {
-                http.Response.StatusCode = 400;
-                return;
-            }
-
             var todo = await db.Todos.FindAsync(id);
             if (todo == null)
             {

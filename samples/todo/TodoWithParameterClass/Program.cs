@@ -9,10 +9,10 @@ app.Map("/api/todos",
     routes =>
     {
         routes.MapGet("/", api => api.GetTodos());
-        routes.MapGet("/{id}", api => api.GetTodo());
+        routes.MapGet("/{id}", (http, api) => api.GetTodo(http.RouteValue<int>("id")));
         routes.MapPost("/", api => api.CreateTodo());
-        routes.MapPost("/{id}", api => api.UpdateCompleted());
-        routes.MapDelete("/{id}", api => api.DeleteTodo());
+        routes.MapPost("/{id}", (http, api) => api.UpdateCompleted(http.RouteValue<int>("id")));
+        routes.MapDelete("/{id}", (http, api) => api.DeleteTodo(http.RouteValue<int>("id")));
     });
 
 await app.RunAsync();

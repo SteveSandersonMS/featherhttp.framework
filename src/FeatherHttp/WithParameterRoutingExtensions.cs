@@ -10,6 +10,11 @@ namespace Microsoft.AspNetCore.Http
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public static class WithParameterRoutingExtensions
     {
+        public static T RouteValue<T>(this HttpContext http, string name)
+        {
+            return http.Request.RouteValues.Get<T>(name).Value;
+        }
+
         public static void Map<T>(this IApplicationBuilder builder, string urlPrefix, Func<T> withParameter, Action<WithParameterEndpointRouteBuilder<T>> configuration)
             => Map<T>(builder, urlPrefix, _ => withParameter(), configuration);
 
@@ -55,6 +60,18 @@ namespace Microsoft.AspNetCore.Http
         public void MapDelete(string pattern, WithParameterRequestDelegate<T> requestDelegate)
             => MapMethods(pattern, DeleteMethods, requestDelegate);
 
+        public void MapGet(string pattern, WithHttpParameterRequestDelegate<T> requestDelegate)
+            => MapMethods(pattern, GetMethods, requestDelegate);
+
+        public void MapPost(string pattern, WithHttpParameterRequestDelegate<T> requestDelegate)
+            => MapMethods(pattern, PostMethods, requestDelegate);
+
+        public void MapPut(string pattern, WithHttpParameterRequestDelegate<T> requestDelegate)
+            => MapMethods(pattern, PutMethods, requestDelegate);
+
+        public void MapDelete(string pattern, WithHttpParameterRequestDelegate<T> requestDelegate)
+            => MapMethods(pattern, DeleteMethods, requestDelegate);
+
         public void MapMethods(string pattern, IEnumerable<string> httpMethods, WithParameterRequestDelegate<T> requestDelegate)
         {
             builder.MapMethods(pattern, httpMethods, httpContext =>
@@ -70,8 +87,26 @@ namespace Microsoft.AspNetCore.Http
                 }
             });
         }
+
+        public void MapMethods(string pattern, IEnumerable<string> httpMethods, WithHttpParameterRequestDelegate<T> requestDelegate)
+        {
+            builder.MapMethods(pattern, httpMethods, httpContext =>
+            {
+                var parameterValue = withParameter(httpContext);
+                try
+                {
+                    return requestDelegate(httpContext, parameterValue);
+                }
+                finally
+                {
+                    (parameterValue as IDisposable)?.Dispose();
+                }
+            });
+        }
     }
 
-    public delegate Task WithParameterRequestDelegate<T>(T context);
+    public delegate Task WithParameterRequestDelegate<T>(T parameterValue);
+    public delegate Task WithHttpParameterRequestDelegate<T>(HttpContext http, T parameterValue);
+
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 }
