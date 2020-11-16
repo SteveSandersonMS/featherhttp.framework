@@ -11,6 +11,9 @@ namespace Microsoft.AspNetCore.Http
     public static class WithParameterRoutingExtensions
     {
         public static void Map<T>(this IApplicationBuilder builder, string urlPrefix, Func<T> withParameter, Action<WithParameterEndpointRouteBuilder<T>> configuration)
+            => Map<T>(builder, urlPrefix, _ => withParameter(), configuration);
+
+        public static void Map<T>(this IApplicationBuilder builder, string urlPrefix, Func<HttpContext, T> withParameter, Action<WithParameterEndpointRouteBuilder<T>> configuration)
         {
             builder.Map(urlPrefix, innerBuilder =>
             {
@@ -27,12 +30,12 @@ namespace Microsoft.AspNetCore.Http
     public class WithParameterEndpointRouteBuilder<T>
     {
         private readonly IEndpointRouteBuilder builder;
-        private readonly Func<T> withContext;
+        private readonly Func<HttpContext, T> withParameter;
 
-        public WithParameterEndpointRouteBuilder(IEndpointRouteBuilder builder, Func<T> withContext)
+        public WithParameterEndpointRouteBuilder(IEndpointRouteBuilder builder, Func<HttpContext, T> withContext)
         {
             this.builder = builder;
-            this.withContext = withContext;
+            this.withParameter = withContext;
         }
 
         private readonly static string[] GetMethods = new[] { "get" };
@@ -56,22 +59,19 @@ namespace Microsoft.AspNetCore.Http
         {
             builder.MapMethods(pattern, httpMethods, httpContext =>
             {
-                var customContext = withContext();
+                var parameterValue = withParameter(httpContext);
                 try
                 {
-                    return requestDelegate(httpContext, customContext);
+                    return requestDelegate(parameterValue);
                 }
                 finally
                 {
-                    if (customContext is IDisposable disposableContext)
-                    {
-                        disposableContext.Dispose();
-                    }
+                    (parameterValue as IDisposable)?.Dispose();
                 }
             });
         }
     }
 
-    public delegate Task WithParameterRequestDelegate<T>(HttpContext http, T context);
+    public delegate Task WithParameterRequestDelegate<T>(T context);
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 }
