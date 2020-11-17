@@ -48,33 +48,33 @@ namespace Microsoft.AspNetCore.Http
         private readonly static string[] PutMethods = new[] { "put" };
         private readonly static string[] DeleteMethods = new[] { "delete" };
 
-        public void MapGet(string pattern, WithParameterRequestDelegate<T> requestDelegate)
+        public IEndpointConventionBuilder MapGet(string pattern, WithParameterRequestDelegate<T> requestDelegate)
             => MapMethods(pattern, GetMethods, requestDelegate);
 
-        public void MapPost(string pattern, WithParameterRequestDelegate<T> requestDelegate)
+        public IEndpointConventionBuilder MapPost(string pattern, WithParameterRequestDelegate<T> requestDelegate)
             => MapMethods(pattern, PostMethods, requestDelegate);
 
-        public void MapPut(string pattern, WithParameterRequestDelegate<T> requestDelegate)
+        public IEndpointConventionBuilder MapPut(string pattern, WithParameterRequestDelegate<T> requestDelegate)
             => MapMethods(pattern, PutMethods, requestDelegate);
 
-        public void MapDelete(string pattern, WithParameterRequestDelegate<T> requestDelegate)
+        public IEndpointConventionBuilder MapDelete(string pattern, WithParameterRequestDelegate<T> requestDelegate)
             => MapMethods(pattern, DeleteMethods, requestDelegate);
 
-        public void MapGet(string pattern, WithHttpParameterRequestDelegate<T> requestDelegate)
+        public IEndpointConventionBuilder MapGet(string pattern, WithHttpParameterRequestDelegate<T> requestDelegate)
             => MapMethods(pattern, GetMethods, requestDelegate);
 
-        public void MapPost(string pattern, WithHttpParameterRequestDelegate<T> requestDelegate)
+        public IEndpointConventionBuilder MapPost(string pattern, WithHttpParameterRequestDelegate<T> requestDelegate)
             => MapMethods(pattern, PostMethods, requestDelegate);
 
-        public void MapPut(string pattern, WithHttpParameterRequestDelegate<T> requestDelegate)
+        public IEndpointConventionBuilder MapPut(string pattern, WithHttpParameterRequestDelegate<T> requestDelegate)
             => MapMethods(pattern, PutMethods, requestDelegate);
 
-        public void MapDelete(string pattern, WithHttpParameterRequestDelegate<T> requestDelegate)
+        public IEndpointConventionBuilder MapDelete(string pattern, WithHttpParameterRequestDelegate<T> requestDelegate)
             => MapMethods(pattern, DeleteMethods, requestDelegate);
 
-        public void MapMethods(string pattern, IEnumerable<string> httpMethods, WithParameterRequestDelegate<T> requestDelegate)
+        public IEndpointConventionBuilder MapMethods(string pattern, IEnumerable<string> httpMethods, WithParameterRequestDelegate<T> requestDelegate)
         {
-            builder.MapMethods(pattern, httpMethods, httpContext =>
+            return builder.MapMethods(pattern, httpMethods, httpContext =>
             {
                 var parameterValue = withParameter(httpContext);
                 try
@@ -88,9 +88,9 @@ namespace Microsoft.AspNetCore.Http
             });
         }
 
-        public void MapMethods(string pattern, IEnumerable<string> httpMethods, WithHttpParameterRequestDelegate<T> requestDelegate)
+        public IEndpointConventionBuilder MapMethods(string pattern, IEnumerable<string> httpMethods, WithHttpParameterRequestDelegate<T> requestDelegate)
         {
-            builder.MapMethods(pattern, httpMethods, httpContext =>
+            return builder.MapMethods(pattern, httpMethods, httpContext =>
             {
                 var parameterValue = withParameter(httpContext);
                 try
