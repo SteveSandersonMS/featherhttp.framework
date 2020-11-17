@@ -1,11 +1,23 @@
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Routing;
-using Microsoft.EntityFrameworkCore;
 using Todos;
+using Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.DependencyInjection;
 
-var app = WebApplication.Create(args);
+var builder = WebApplication.CreateBuilder();
+
+var jwtAuth = new JwtAuth(builder.Configuration);
+builder.Services.AddAuthorization();
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = jwtAuth.ValidationParameters;
+});
+
+var app = builder.Build();
+app.UseAuthentication();
+app.UseAuthorization();
 
 new TodoApi().MapRoutes(app);
+new AuthenticationApi(jwtAuth).MapRoutes(app);
 
 await app.RunAsync();

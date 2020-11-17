@@ -9,11 +9,11 @@ namespace Todos
     {
         public void MapRoutes(WebApplication app)
         {
-            app.MapGet("/api/todos", GetAllTodos);
-            app.MapGet("/api/todos/{id:int}", GetTodo);
-            app.MapPost("/api/todos", CreateTodo);
-            app.MapPost("/api/todos/{id:int}", UpdateTodo);
-            app.MapDelete("/api/todos/{id}", DeleteTodo);
+            app.MapGet("/api/todos", GetAllTodos).RequireAuthorization();
+            app.MapGet("/api/todos/{id:int}", GetTodo).RequireAuthorization();
+            app.MapPost("/api/todos", CreateTodo).RequireAuthorization();
+            app.MapPost("/api/todos/{id:int}", UpdateTodo).RequireAuthorization();
+            app.MapDelete("/api/todos/{id}", DeleteTodo).RequireAuthorization();
         }
 
         private async Task GetTodo(HttpContext http)
