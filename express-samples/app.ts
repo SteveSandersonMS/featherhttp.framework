@@ -1,9 +1,14 @@
+import * as fs from 'fs';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
+import { Validator } from 'express-json-validator-middleware';
 import * as db from './todo-db';
 import { Todo } from './todo';
+
 const app = express();
 const port = process.env.PORT || 3000;
+const jsonValidator = new Validator({ allErrors: true });
+const todoSchema = JSON.parse(fs.readFileSync('./schema/todo.json', { encoding: 'utf-8' }));
 
 app.use(bodyParser.json());
 
@@ -22,8 +27,7 @@ app.get('/api/todos/:id(\\d+)', (req, res) => {
     }
 });
 
-app.post('/api/todos', (req, res) => {
-    // TODO: How do we avoid accepting malformed data?
+app.post('/api/todos', jsonValidator.validate({ body: todoSchema }), (req, res) => {
     const data = req.body as Todo;
     data.id = db.todos.size + 1;
     db.todos.set(data.id, data);
@@ -57,5 +61,5 @@ app.delete('/api/todos/:id(\\d+)', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+    console.log(`Example app listening at http://localhost:${port}`)
 });
