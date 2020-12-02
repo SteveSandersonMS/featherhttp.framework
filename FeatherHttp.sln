@@ -59,6 +59,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoBasicWithAuthNotIdentit
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoWithMapActionLambdas", "samples\todo\TodoWithMapActionLambdas\TodoWithMapActionLambdas.csproj", "{BCAB7BAA-6CAA-4DD3-9DFD-28D09B0B30CF}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoWithMapActionApiClass", "samples\todo\TodoWithMapActionApiClass\TodoWithMapActionApiClass.csproj", "{B3EB2F4D-386C-47B1-80DC-DF3CA5D198C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -333,6 +335,18 @@ Global
 		{BCAB7BAA-6CAA-4DD3-9DFD-28D09B0B30CF}.Release|x64.Build.0 = Release|Any CPU
 		{BCAB7BAA-6CAA-4DD3-9DFD-28D09B0B30CF}.Release|x86.ActiveCfg = Release|Any CPU
 		{BCAB7BAA-6CAA-4DD3-9DFD-28D09B0B30CF}.Release|x86.Build.0 = Release|Any CPU
+		{B3EB2F4D-386C-47B1-80DC-DF3CA5D198C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3EB2F4D-386C-47B1-80DC-DF3CA5D198C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3EB2F4D-386C-47B1-80DC-DF3CA5D198C8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B3EB2F4D-386C-47B1-80DC-DF3CA5D198C8}.Debug|x64.Build.0 = Debug|Any CPU
+		{B3EB2F4D-386C-47B1-80DC-DF3CA5D198C8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B3EB2F4D-386C-47B1-80DC-DF3CA5D198C8}.Debug|x86.Build.0 = Debug|Any CPU
+		{B3EB2F4D-386C-47B1-80DC-DF3CA5D198C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3EB2F4D-386C-47B1-80DC-DF3CA5D198C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3EB2F4D-386C-47B1-80DC-DF3CA5D198C8}.Release|x64.ActiveCfg = Release|Any CPU
+		{B3EB2F4D-386C-47B1-80DC-DF3CA5D198C8}.Release|x64.Build.0 = Release|Any CPU
+		{B3EB2F4D-386C-47B1-80DC-DF3CA5D198C8}.Release|x86.ActiveCfg = Release|Any CPU
+		{B3EB2F4D-386C-47B1-80DC-DF3CA5D198C8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -361,6 +375,7 @@ Global
 		{AEAE969C-E094-493D-8643-B8047425BFD8} = {EC159D36-9989-40B1-8DCA-2EAA51217156}
 		{5BBCD662-25A3-4C5D-B20B-215265AE2879} = {EC159D36-9989-40B1-8DCA-2EAA51217156}
 		{BCAB7BAA-6CAA-4DD3-9DFD-28D09B0B30CF} = {EC159D36-9989-40B1-8DCA-2EAA51217156}
+		{B3EB2F4D-386C-47B1-80DC-DF3CA5D198C8} = {EC159D36-9989-40B1-8DCA-2EAA51217156}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FEF71547-9F12-42D5-9D50-602DA5071F3F}
